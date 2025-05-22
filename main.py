@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
-#import pyperclip
+
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
@@ -20,7 +20,6 @@ def generate_password():
 
     password = "".join(password_list)
     password_entry.insert(0, password)
-    #pyperclip.copy(password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
@@ -34,7 +33,7 @@ def save():
     else:
         is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {email} \nPassword: {password} \nIs it ok to save?")
         if is_ok:
-            with open("Day 29 Password Manager/data.txt", "a") as data_file:
+            with open("data.txt", "a") as data_file:
                 data_file.write(f"{website} | {email} | {password}\n")
                 website_entry.delete(0, END)
                 password_entry.delete(0, END)
@@ -47,7 +46,7 @@ window.title("Password Manager")
 window.config(padx=50, pady=50)
 
 canvas = Canvas(height=200, width=200)
-logo_img = PhotoImage(file="Day 29 Password Manager/logo.png")
+logo_img = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_img)
 canvas.grid(row=0, column=1)
 
